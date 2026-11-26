@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한반도 군사·안보 OSINT 브리핑 — 2026년 11월 21일 07:01 KST</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Utilitarian Deep Research · Mirrored split hero (headline left, numeral right) · Hero → Taiwan 17→15 & 4-day SVG → Diplomatic & Cyber updates → 20-item matrix → Pull quote → Sources · Plus Jakarta Sans + Noto Sans KR + JetBrains Mono · Crisp White #FFFFFF + Deep Violet #5B21B6 · radius 0px · Inline SVG Taiwan 4-day trend chart */
+
+:root {
+  --paper: #FFFFFF;
+  --ink: #0F172A;
+  --ink2: #334155;
+  --mute: #475569;
+  --hair: #CBD5E1;
+  --accent: #6D28D9;
+  --accent-text: #5B21B6;
+  --amber-text: #78350F;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 68px clamp(24px, 10.4vw, 112px) 92px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.measure {
+  max-width: 68ch;
+}
+
+/* Split Hero (Headline Left, Numeral Right) */
+.hero-split {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 24px 36px;
+  padding-bottom: 38px;
+  border-bottom: 2px solid var(--ink);
+  align-items: end;
+}
+
+.hero-left {
+  grid-column: 1 / 9;
+}
+
+.hero-right {
+  grid-column: 9 / 13;
+  padding-left: 24px;
+  border-left: 1px solid var(--hair);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.big-delta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(34px, 3.6vw, 46px);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--accent-text);
+}
+
+.sub-stat {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.stat-cap {
+  font-size: 13.5px;
+  color: var(--mute);
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-size: clamp(30px, 3.8vw, 46px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.deck {
+  margin: 0;
+  font-size: 17.5px;
+  line-height: 1.62;
+  color: var(--ink2);
+  max-width: 64ch;
+}
+
+/* Sections */
+.sec-s {
+  margin-top: 64px;
+}
+
+h2 {
+  margin: 0 0 18px;
+  font-size: clamp(23px, 2.4vw, 30px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+p {
+  margin: 0 0 15px;
+  font-size: 16px;
+  line-height: 1.72;
+  color: var(--ink2);
+}
+
+a {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  color: var(--ink);
+}
+
+/* Multi-column */
+.strip-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--hair);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--hair);
+}
+
+.split-left {
+  grid-column: 1 / 5;
+}
+
+.split-right {
+  grid-column: 5 / 13;
+}
+
+/* Fact vs Assessment rule */
+.fact-split {
+  margin: 16px 0 8px;
+  padding-left: 14px;
+  border-left: 2px solid var(--accent);
+}
+
+.fact-split p {
+  margin: 0 0 6px;
+  font-size: 14.5px;
+  line-height: 1.62;
+}
+
+.fact-split p:last-child {
+  margin-bottom: 0;
+}
+
+.meta-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--mute);
+  margin-top: 6px;
+}
+
+/* Figures & SVG */
+figure {
+  margin: 28px 0 0;
+}
+
+figcaption.fig-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+figcaption.fig-note {
+  font-size: 13px;
+  color: var(--mute);
+  margin-top: 8px;
+}
+
+svg.chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Open Table */
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 14px;
+}
+
+table.osint-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+table.osint-table thead th {
+  text-align: left;
+  font-family: 'JetBrains Mono', 'Noto Sans KR', monospace;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--mute);
+  padding: 10px 12px;
+  border-bottom: 2px solid var(--ink);
+  white-space: nowrap;
+}
+
+table.osint-table tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--hair);
+  vertical-align: top;
+  color: var(--ink2);
+}
+
+table.osint-table tbody tr.changed-row td {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+table.osint-table td.col-num {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  white-space: nowrap;
+  width: 44px;
+}
+
+table.osint-table td.col-item {
+  width: 210px;
+}
+
+table.osint-table td.col-sig {
+  white-space: nowrap;
+  width: 72px;
+}
+
+/* Pull quote */
+blockquote.pull {
+  margin: 56px 0;
+  padding: 26px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+blockquote.pull p {
+  margin: 0 0 10px;
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  max-width: 48ch;
+}
+
+blockquote.pull cite {
+  font-style: normal;
+  font-size: 14px;
+  color: var(--mute);
+}
+
+/* Sources list */
+ol.sources-list {
+  margin: 14px 0 0;
+  padding-left: 22px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--ink2);
+}
+
+ol.sources-list li {
+  margin-bottom: 8px;
+}
+
+ol.sources-list .src-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  color: var(--mute);
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .hero-left, .hero-right, .split-left, .split-right {
+    grid-column: 1 / -1;
+  }
+  .hero-right {
+    padding-left: 0;
+    border-left: none;
+    padding-top: 16px;
+    border-top: 1px solid var(--hair);
+  }
+  .strip-3 {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="hero-split">
+  <div class="hero-left">
+    <h1>대만해협 PLA 표적 15기로 감소, 한반도는 신규 발사 없이 외교·사이버 쟁점만 이동</h1>
+    <p class="deck">
+      2026년 11월 21일 07:01 KST 재검색 기준 한반도 OSINT 20항목 정시 점검. 지난 06:01 보고 대비 대만해협 집계만 17기에서 15기로 변경됐으며, 신규 탄도 발사·KCNA 신규 군사 보도·신호등 등급 변동은 없다. 정동영 장관-미 대사·주한미군사령관 회동과 Cisco Talos Solana C2 분석을 반영하고 2023년 SLV·2025년 대만 기사는 배제했다.
+    </p>
+  </div>
+  <div class="hero-right">
+    <div>
+      <div class="big-delta">17 → 15</div>
+      <div class="stat-cap">대만해협 11/20~21 창구 감소</div>
+    </div>
+    <div>
+      <div class="sub-stat">0 · 17 · 3</div>
+      <div class="stat-cap">신호등 유지 (적 0 · 황 17 · 녹 3)</div>
+    </div>
+  </div>
+</header>
+
+<section class="sec-s split">
+  <div class="split-left">
+    <h2>대만해협 11/20~21 창구 15기 감소 및 2025년 오인 배제</h2>
+    <p class="meta-line">항목 19 · 06:01 대비 유일 변경</p>
+  </div>
+  <div class="split-right">
+    <p>
+      11월 21일 오전 대만 국방부 군사뉴스통신사(MNA) 발표 기준, 11월 20일 06:00~11월 21일 06:00 대만시간 창구에서 탐지된 중국군 표적은 공군 4기(중선 초과 중부·서남·동부 공역 진입 3기), 해군 함선 7척, 공무선 4척 등 총 15기·함선이다. 직전 창구(17기) 대비 항공기 4대·월선 3기가 줄고 공무선이 2척 늘어 총 2개 감소했으며, 신규 발표문에서 기구(풍선) 언급은 확인되지 않았다.
+    </p>
+    <p>
+      검색 결과에 나타난 ‘29기·23월선·6함·9공무선’ 보도는 민국 114년(2025년) 11월 21일 건으로 확인돼 이번 2026년 창구에서 제외했다. 민국 114년은 2025년, 민국 115년은 2026년으로 엄격히 구분한다.
+    </p>
+    <div class="fact-split">
+      <p><strong>사실:</strong> 11/20~21 창구 PLA 표적 총 15기(항공기 4·함선 7·공무선 4) 감소가 확인됐다.</p>
+      <p><strong>추정:</strong> 침공 임박이나 봉쇄 전환은 단정 불가하며, 기구 유무 및 영공 침범 여부는 MND 원문 추가 확인이 필요하다.</p>
+    </div>
+
+    <figure>
+      <figcaption class="fig-title">대만해협 일일 PLA 표적은 21일 15기로 내려앉으며 나흘 연속 10~17기 일상 범위를 유지했다</figcaption>
+      <svg class="chart" viewBox="0 0 680 310" role="img" aria-label="대만해협 11월 18일~21일 중국군 탐지 표적 4일 추이 차트">
+        <line x1="170" y1="24" x2="170" y2="246" stroke="#CBD5E1" stroke-width="1"/>
+        <line x1="330" y1="24" x2="330" y2="246" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="3,3"/>
+        <line x1="490" y1="24" x2="490" y2="246" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="3,3"/>
+        <line x1="650" y1="24" x2="650" y2="246" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="3,3"/>
+
+        <text x="170" y="268" font-family="JetBrains Mono, monospace" font-size="13" fill="#475569" text-anchor="middle">0</text>
+        <text x="330" y="268" font-family="JetBrains Mono, monospace" font-size="13" fill="#475569" text-anchor="middle">6</text>
+        <text x="490" y="268" font-family="JetBrains Mono, monospace" font-size="13" fill="#475569" text-anchor="middle">12</text>
+        <text x="650" y="268" font-family="JetBrains Mono, monospace" font-size="13" fill="#475569" text-anchor="middle">18</text>
+        <text x="410" y="294" font-family="Plus Jakarta Sans, Noto Sans KR, sans-serif" font-size="13" fill="#475569" text-anchor="middle">탐지 표적 수 (단위: 기·척, 1단위 = 26.6px)</text>
+
+        <!-- 11/17~18: 17 -->
+        <text x="156" y="60" font-family="Plus Jakarta Sans, Noto Sans KR, sans-serif" font-size="14" font-weight="600" fill="#0F172A" text-anchor="end">11/17~18 (17)</text>
+        <rect x="170" y="38" width="240" height="28" fill="#475569"/>
+        <rect x="410" y="38" width="160" height="28" fill="#64748B"/>
+        <rect x="570" y="38" width="53" height="28" fill="#CBD5E1"/>
+        <text x="290" y="57" font-family="Plus Jakarta Sans, Noto Sans KR, sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">항공 9</text>
+        <text x="490" y="57" font-family="Plus Jakarta Sans, Noto Sans KR, sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">함선 6</text>
+        <text x="631" y="57" font-family="JetBrains Mono, monospace" font-size="12.5" fill="#0F172A">공무 2</text>
+
+        <!-- 11/18~19: 10 -->
+        <text x="156" y="114" font-family="Plus Jakarta Sans, Noto Sans KR, sans-serif" font-size="14" font-weight="600" fill="#0F172A" text-anchor="end">11/18~19 (10)</text>
+        <rect x="170" y="92" width="27" height="28" fill="#475569"/>
+        <rect x="197" y="92" width="186" height="28" fill="#64748B"/>
+        <rect x="383" y="92" width="53" height="28" fill="#CBD5E1"/>
+        <text x="290" y="111" font-family="Plus Jakarta Sans, Noto Sans KR, sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">함선 7</text>
+        <text x="444" y="111" font-family="JetBrains Mono, monospace" font-size="12.5" fill="#334155">항공 1·공무 2</text>
+
+        <!-- 11/19~20: 17 -->
+        <text x="156" y="168" font-family="Plus Jakarta Sans, Noto Sans KR, sans-serif" font-size="14" font-weight="600" fill="#0F172A" text-anchor="end">11/19~20 (17)</text>
+        <rect x="170" y="146" width="213" height="28" fill="#475569"/>
+        <rect x="383" y="146" width="186" height="28" fill="#64748B"/>
+        <rect x="569" y="146" width="53" height="28" fill="#CBD5E1"/>
+        <text x="276" y="165" font-family="Plus Jakarta Sans, Noto Sans KR, sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">항공 8</text>
+        <text x="476" y="165" font-family="Plus Jakarta Sans, Noto Sans KR, sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">함선 7</text>
+        <text x="631" y="165" font-family="JetBrains Mono, monospace" font-size="12.5" fill="#0F172A">+기구 4</text>
+
+        <!-- 11/20~21: 15 (신규) -->
+        <text x="156" y="222" font-family="Plus Jakarta Sans, Noto Sans KR, sans-serif" font-size="14" font-weight="700" fill="#5B21B6" text-anchor="end">11/20~21 (15)</text>
+        <rect x="170" y="200" width="106" height="28" fill="#6D28D9"/>
+        <rect x="276" y="200" width="186" height="28" fill="#5B21B6"/>
+        <rect x="462" y="200" width="106" height="28" fill="#A78BFA"/>
+        <text x="223" y="219" font-family="Plus Jakarta Sans, Noto Sans KR, sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">항공 4</text>
+        <text x="369" y="219" font-family="Plus Jakarta Sans, Noto Sans KR, sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">함선 7</text>
+        <text x="515" y="219" font-family="Plus Jakarta Sans, Noto Sans KR, sans-serif" font-size="12.5" font-weight="600" fill="#0F172A" text-anchor="middle">공무 4</text>
+      </svg>
+      <figcaption class="fig-note">단위: 기·척. 11/20~21 창구는 대만 MNA 11월 21일 오전 발표 기준(월선 3기). 11/19 러시아 Tu-95 2기 대만 ADIZ 진입은 별건.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec-s">
+  <h2>주요 전선 보강: 한미 연쇄 회동, Solana C2 첩보, 2023년 SLV 배제</h2>
+  <div class="strip-3">
+    <div>
+      <h3>정동영-스틸-브런슨 연쇄 회동과 트럼프 언급</h3>
+      <p>
+        정동영 통일부 장관은 11월 20일 미셸 스틸 주한미국대사를 첫 접견하고 제이비어 브런슨 주한미군사령관과 판문점에서 연쇄 회동했다(<a href="https://www.yna.co.kr/view/AKR20261119163452504" target="_blank" rel="noopener noreferrer">연합뉴스 11/20</a>, <a href="https://www.mk.co.kr/news/politics/12214935" target="_blank" rel="noopener noreferrer">매일경제 11/20</a>). 이는 한미 공조 외교 접촉이지 신규 경고가 아니다. 트럼프 대통령은 11월 20일 워싱턴 요약에서 김정은과 “언젠가는 만날 것”이라고 했으나 확정 일정은 없다.
+      </p>
+    </div>
+    <div>
+      <h3>Cisco Talos 11/18 Solana C2 분석 추가</h3>
+      <p>
+        <a href="https://blog.talosintelligence.com/uat-12643-suspected-north-korea-aligned-actor-blends-blockchain-resilience-with-targeted-infostealing/" target="_blank" rel="noopener noreferrer">Cisco Talos 11월 18일 보고서</a>는 북한 연계 의심 금융 동기 그룹 <code>UAT-12643</code>이 Solana 블록체인 메모에 악성코드(Overlord RAT) C2 서버 주소를 숨겨 서버 교체를 용이하게 했다고 밝혔다. 11/19 <a href="https://mlq.ai/news/north-korean-hackers-moved-stolen-funds-through-skys-stablecoin-system-coindesk-reports/" target="_blank" rel="noopener noreferrer">CoinDesk Sky PSM 분석</a>과 함께 지속적 자금 세탁·첩보 흐름으로 유지하며, 07:01 기준 신규 피해 확정은 없다.
+      </p>
+    </div>
+    <div>
+      <h3>11/21 SLV 성명은 2023년 건으로 배제</h3>
+      <p>
+        07:01 재검색에서 11월 21일 우주발사체(SLV) 관련 공동성명이 노출됐으나 2023년 11월 21일 건으로 확인돼 배제했다. 마지막 합참 검증 탄도 발사는 11월 4일 선덕 건이며, <a href="https://www.38north.org/" target="_blank" rel="noopener noreferrer">38North</a> 07:01 확인에서도 신규 군사 분석은 없다. 철원 GOP 하사 사망(11/02) 역시 육군이 대북 용의점 없음으로 파악하고 있다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="sec-s">
+  <h2>20개 모니터링 지표 07:01 KST 현황 (변동 없음)</h2>
+  <div class="table-wrap">
+    <table class="osint-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>항목</th>
+          <th>신호등</th>
+          <th>판단 한 줄</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="col-num">1</td><td class="col-item">탄도</td><td class="col-sig">🟡</td><td>신규 합참 확인 없음, 마지막 검증 11/04 선덕 유지, 11/21 SLV 결과는 2023년 건</td></tr>
+        <tr><td class="col-num">2</td><td class="col-item">순항</td><td class="col-sig">🟡</td><td>11/02 집속탄두, 11/03 공개 유지</td></tr>
+        <tr><td class="col-num">3</td><td class="col-item">SLBM·해군</td><td class="col-sig">🟡</td><td>11/09 어뢰 유지, 동해안 해군기지 2곳 건설 지속 유지</td></tr>
+        <tr><td class="col-num">4</td><td class="col-item">병력·포병·4군단</td><td class="col-sig">🟡</td><td>38North 신규 군사 분석 없음, 11/03 240mm 유지, 11/18 AI 챗봇 분석은 비군사</td></tr>
+        <tr><td class="col-num">5</td><td class="col-item">핵·TEL·다탄두</td><td class="col-sig">🟡</td><td>IAEA 11/18 영변 확장 외부 완공 유지, IAEA 한국 잠수함 보고는 별건</td></tr>
+        <tr><td class="col-num">6</td><td class="col-item">군수</td><td class="col-sig">🟡</td><td>신규 이동 독립 확인 없음, 젤렌스키 주장만 유지</td></tr>
+        <tr><td class="col-num">7</td><td class="col-item">DMZ·지뢰·요새화</td><td class="col-sig">🟡</td><td>신규 매설 없음, 유엔사·북한군 회담 중단 유지</td></tr>
+        <tr><td class="col-num">8</td><td class="col-item">GPS·확성기</td><td class="col-sig">🟡</td><td>11/18 재개 예고 보도만, 실제 방송 합참 확인 없음, 11/02 미가동 확인 유지</td></tr>
+        <tr><td class="col-num">9</td><td class="col-item">전략자산 전체</td><td class="col-sig">🟡</td><td>07:01 신규 전개 없음, 11/17 KADIZ 진입은 이미 반영, KADIZ 침범 없음</td></tr>
+        <tr><td class="col-num">10</td><td class="col-item">열병식</td><td class="col-sig">🟢</td><td>10/10 유지, 신규 없음</td></tr>
+        <tr><td class="col-num">11</td><td class="col-item">정부경고</td><td class="col-sig">🟡</td><td>통일부·합참 주시 유지, 11/20 정동영-스틸-브런슨 회동은 외교 접촉, 신규 경고 아님</td></tr>
+        <tr><td class="col-num">12</td><td class="col-item">유실탄약</td><td class="col-sig">🟢</td><td>신규 분실·회수 공지 없음</td></tr>
+        <tr><td class="col-num">13</td><td class="col-item">한미훈련</td><td class="col-sig">🟢</td><td>2026 호국 10/19-10/30 종료, 11/17 시작 아님</td></tr>
+        <tr><td class="col-num">14</td><td class="col-item">김정은·KCNA</td><td class="col-sig">🟡</td><td>11/20 KCNA 라오스 의정서 사진 공개 유지, 군사 보도 없음, 해군대학·세포비서 회의는 이미 반영</td></tr>
+        <tr><td class="col-num">15</td><td class="col-item">사이버·제재·IT</td><td class="col-sig">🟡</td><td>Cisco Talos 11/18 Solana C2 분석 유지, CoinDesk 11/19 Sky PSM 유지, 신규 피해 확정 없음</td></tr>
+        <tr><td class="col-num">16</td><td class="col-item">국제공조·VOA·UN</td><td class="col-sig">🟡</td><td>UN 제3위 95찬성·14반대·58기권 채택 유지, 본회의 대기</td></tr>
+        <tr><td class="col-num">17</td><td class="col-item">중국·러시아 연루</td><td class="col-sig">🟡</td><td>3자회담 공동성명 백악관·중국·크렘린궁 공개 확인 유지</td></tr>
+        <tr><td class="col-num">18</td><td class="col-item">전방부대</td><td class="col-sig">🟡</td><td>철원 GOP 11/02 수사 중 유지, 북한 연관 증거 없음</td></tr>
+        <tr class="changed-row"><td class="col-num">19</td><td class="col-item">대만·대만해협</td><td class="col-sig">🟡</td><td>신규 11/20-11/21 집계 15로 감소, 항공기 4·월선 3·함선 7·공무선 4</td></tr>
+        <tr><td class="col-num">20</td><td class="col-item">미국 전쟁 동향</td><td class="col-sig">🟡</td><td>3자회담 개최·공동성명 확인, 합의·돌파구 발표 없음, 미북 접촉 성사 없음</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<blockquote class="pull">
+  <p>“지난 06:01 보고 대비 대만해협 집계(17→15)만 변경됐으며, 07:01 기준 검증된 신규 군사 도발은 없다.”</p>
+  <cite>2026-11-21 07:01 KST 정시 점검</cite>
+</blockquote>
+
+<section class="sec-s">
+  <h2>참고 출처</h2>
+  <ol class="sources-list">
+    <li>
+      <a href="https://www.yna.co.kr/view/AKR20261119163452504" target="_blank" rel="noopener noreferrer">연합뉴스 — 정동영, 美대사 첫 접견…브런슨과는 '평화상징' 판문점서 회동</a>
+      <span class="src-time">2026-11-20 17:54 KST</span>
+    </li>
+    <li>
+      <a href="https://www.mk.co.kr/news/politics/12214935" target="_blank" rel="noopener noreferrer">매일경제 — 정동영, 스틸·브런슨 연쇄회동…"한반도 평화에 한미공조 필수"</a>
+      <span class="src-time">2026-11-20 발행</span>
+    </li>
+    <li>
+      <a href="https://blog.talosintelligence.com/uat-12643-suspected-north-korea-aligned-actor-blends-blockchain-resilience-with-targeted-infostealing/" target="_blank" rel="noopener noreferrer">Cisco Talos — UAT-12643: Suspected North Korea-aligned actor blends blockchain resilience with targeted infostealing</a>
+      <span class="src-time">2026-11-18 발행</span>
+    </li>
+    <li>
+      <a href="https://mlq.ai/news/north-korean-hackers-moved-stolen-funds-through-skys-stablecoin-system-coindesk-reports/" target="_blank" rel="noopener noreferrer">MLQ.ai (CoinDesk 인용) — North Korean hackers moved stolen funds through Sky's stablecoin system</a>
+      <span class="src-time">2026-11-19 발행</span>
+    </li>
+    <li>
+      <a href="https://www.whitehouse.gov/briefings-statements/2026/11/u-s-russia-china-heads-of-state-declaration-toward-peace/" target="_blank" rel="noopener noreferrer">The White House — U.S.–Russia–China Heads of State Declaration Toward Peace</a>
+      <span class="src-time">2026-11-19 공개</span>
+    </li>
+    <li>
+      <a href="https://www.38north.org/" target="_blank" rel="noopener noreferrer">38 North — Informed Analysis of North Korea (홈페이지 07:01 확인)</a>
+      <span class="src-time">2026-11-21 07:01 확인</span>
+    </li>
+    <li>
+      <a href="https://air.mnd.gov.tw/EN/News/News_Detail.aspx?CID=214&ID=59406" target="_blank" rel="noopener noreferrer">대만 국방부(MND) — PLA activities in the waters and airspace around Taiwan Nov. 20 2026</a>
+      <span class="src-time">2026-11-20 발표</span>
+    </li>
+    <li>
+      <a href="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156789964&pWise=sub&pWiseSub=C3" target="_blank" rel="noopener noreferrer">대한민국 외교부 — IAEA, 우리 핵추진잠수함에 대한 사무총장 최초 보고서 발간</a>
+      <span class="src-time">2026-11-19 발행</span>
+    </li>
+  </ol>
+</section>
+
+<script src="../archive.js" defer></script>
+</body>
+</html>

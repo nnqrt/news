@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한반도 군사·안보 OSINT 브리핑 — 2026년 11월 18일</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Utilitarian Deep Research · Answer-first compact hero · Summary → Viz → 4 thematic sections → 20-item matrix → Sources · IBM Plex Sans + Noto Sans KR + IBM Plex Mono · Crisp White #FFFFFF + Cobalt #1E3A8A · radius 0px · Inline SVG status matrix chart */
+
+:root {
+  --paper: #FFFFFF;
+  --ink: #0F172A;
+  --ink2: #334155;
+  --mute: #475569;
+  --hair: #CBD5E1;
+  --accent: #1D4ED8;
+  --accent-text: #1E3A8A;
+  --red: #B91C1C;
+  --red-text: #991B1B;
+  --amber: #B45309;
+  --amber-text: #78350F;
+  --green: #047857;
+  --green-text: #065F46;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 68px clamp(24px, 10.4vw, 112px) 92px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0 24px;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.measure {
+  max-width: 68ch;
+}
+
+/* Header & Answer-First Hero */
+.hero {
+  padding-bottom: 40px;
+  border-bottom: 2px solid var(--ink);
+}
+
+h1 {
+  margin: 0 0 18px;
+  font-size: clamp(32px, 4.2vw, 52px);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.deck {
+  margin: 0 0 28px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink2);
+  max-width: 66ch;
+}
+
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--hair);
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metric-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.metric-num.accent {
+  color: var(--accent-text);
+}
+
+.metric-num.red {
+  color: var(--red-text);
+}
+
+.metric-label {
+  font-size: 14px;
+  color: var(--mute);
+}
+
+/* Sections */
+.sec-s {
+  margin-top: 64px;
+}
+
+h2 {
+  margin: 0 0 20px;
+  font-size: clamp(24px, 2.5vw, 32px);
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+h3 {
+  margin: 28px 0 10px;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+p {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.72;
+  color: var(--ink2);
+}
+
+a {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  color: var(--ink);
+}
+
+/* Split layout */
+.split {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--hair);
+}
+
+.split-left {
+  grid-column: 1 / 5;
+}
+
+.split-right {
+  grid-column: 5 / 13;
+}
+
+/* Multi-column open strip */
+.strip-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--hair);
+}
+
+/* Fact vs Assessment inline rule (open canvas, no box) */
+.fact-split {
+  margin: 20px 0 8px;
+  padding-left: 16px;
+  border-left: 2px solid var(--accent);
+}
+
+.fact-split p {
+  margin: 0 0 8px;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.fact-split p:last-child {
+  margin-bottom: 0;
+}
+
+.meta-line {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: var(--mute);
+  margin-top: 8px;
+}
+
+/* Pull quote */
+blockquote.pull {
+  margin: 56px 0;
+  padding: 28px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+blockquote.pull p {
+  margin: 0 0 12px;
+  font-size: clamp(22px, 2.6vw, 32px);
+  font-weight: 600;
+  line-height: 1.38;
+  color: var(--ink);
+  max-width: 44ch;
+}
+
+blockquote.pull cite {
+  font-style: normal;
+  font-size: 14px;
+  color: var(--mute);
+}
+
+/* Figures & SVG */
+figure {
+  margin: 40px 0 0;
+}
+
+figcaption.fig-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+figcaption.fig-note {
+  font-size: 13px;
+  color: var(--mute);
+  margin-top: 8px;
+}
+
+svg.chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Open Table */
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 16px;
+}
+
+table.osint-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+table.osint-table thead th {
+  text-align: left;
+  font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--mute);
+  padding: 10px 12px;
+  border-bottom: 2px solid var(--ink);
+  white-space: nowrap;
+}
+
+table.osint-table tbody td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--hair);
+  vertical-align: top;
+  color: var(--ink2);
+}
+
+table.osint-table tbody tr.changed td {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+table.osint-table td.col-num {
+  font-family: 'IBM Plex Mono', monospace;
+  white-space: nowrap;
+  width: 48px;
+}
+
+table.osint-table td.col-item {
+  width: 220px;
+}
+
+table.osint-table td.col-sig {
+  white-space: nowrap;
+  width: 90px;
+}
+
+/* Sources list */
+ol.sources-list {
+  margin: 16px 0 0;
+  padding-left: 22px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--ink2);
+}
+
+ol.sources-list li {
+  margin-bottom: 8px;
+}
+
+ol.sources-list .src-time {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  color: var(--mute);
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .hero-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .split-left, .split-right {
+    grid-column: 1 / -1;
+  }
+  .strip-2 {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>영변 농축시설 확장과 DMZ 경계 소멸: 선전 APEC 3자 회담 전야의 한반도 안보 지형</h1>
+  <p class="deck">
+    2026년 11월 18일 22:54 KST 기준 한반도 군사·안보 공개출처정보(OSINT) 종합 보고. IAEA의 영변 우라늄 농축시설 추가 확장 확인, DMZ 군사분계선(MDL) 합의 실효 진단, 북한 연계 해커의 AI 코딩 도구 악용, 그리고 19일 선전 미·중·러 첫 3자 정상회담을 앞둔 외교·군사 변수를 20개 모니터링 지표로 점검한다.
+  </p>
+  <div class="hero-metrics">
+    <div class="metric-item">
+      <span class="metric-num accent">9 / 20</span>
+      <span class="metric-label">금일(11/16~18) 변동 지표</span>
+    </div>
+    <div class="metric-item">
+      <span class="metric-num red">7</span>
+      <span class="metric-label">적색(고위험) 경보 항목</span>
+    </div>
+    <div class="metric-item">
+      <span class="metric-num">7</span>
+      <span class="metric-label">황색(주의) 관찰 항목</span>
+    </div>
+    <div class="metric-item">
+      <span class="metric-num">6</span>
+      <span class="metric-label">녹색(안정) 유지 항목</span>
+    </div>
+  </div>
+</header>
+
+<section class="sec-s">
+  <figure>
+    <figcaption class="fig-title">핵·DMZ·사이버·중러·미국 동향 등 9개 지표가 최근 72시간 내 상향 변동하며 적색·황색 경보가 70%를 차지했다</figcaption>
+    <svg class="chart" viewBox="0 0 680 390" role="img" aria-label="20개 한반도 OSINT 지표 등급 및 변동 분포 차트">
+      <!-- Gridlines -->
+      <line x1="210" y1="30" x2="210" y2="335" stroke="#CBD5E1" stroke-width="1"/>
+      <line x1="340" y1="30" x2="340" y2="335" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="470" y1="30" x2="470" y2="335" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="600" y1="30" x2="600" y2="335" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="3,3"/>
+
+      <!-- X Axis labels -->
+      <text x="210" y="358" font-family="IBM Plex Mono, monospace" font-size="13" fill="#475569" text-anchor="middle">0</text>
+      <text x="340" y="358" font-family="IBM Plex Mono, monospace" font-size="13" fill="#475569" text-anchor="middle">2</text>
+      <text x="470" y="358" font-family="IBM Plex Mono, monospace" font-size="13" fill="#475569" text-anchor="middle">4</text>
+      <text x="600" y="358" font-family="IBM Plex Mono, monospace" font-size="13" fill="#475569" text-anchor="middle">6</text>
+      <text x="405" y="382" font-family="IBM Plex Sans, Noto Sans KR, sans-serif" font-size="13" fill="#475569" text-anchor="middle">지표 수 (단위: 개, 전체 20개 항목)</text>
+
+      <!-- Row 1: 적색(변동) vs 적색(유지) -->
+      <text x="196" y="75" font-family="IBM Plex Sans, Noto Sans KR, sans-serif" font-size="15" font-weight="600" fill="#0F172A" text-anchor="end">적색 경보 (총 7개)</text>
+      <rect x="210" y="52" width="260" height="36" fill="#991B1B"/>
+      <rect x="470" y="52" width="195" height="36" fill="#CBD5E1"/>
+      <text x="340" y="75" font-family="IBM Plex Sans, Noto Sans KR, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF" text-anchor="middle">금일 변동 4개</text>
+      <text x="567" y="75" font-family="IBM Plex Sans, Noto Sans KR, sans-serif" font-size="14" fill="#0F172A" text-anchor="middle">기존 3개</text>
+
+      <!-- Row 2: 황색(변동) vs 황색(유지) -->
+      <text x="196" y="155" font-family="IBM Plex Sans, Noto Sans KR, sans-serif" font-size="15" font-weight="600" fill="#0F172A" text-anchor="end">황색 주의 (총 7개)</text>
+      <rect x="210" y="132" width="325" height="36" fill="#1D4ED8"/>
+      <rect x="535" y="132" width="130" height="36" fill="#CBD5E1"/>
+      <text x="372" y="155" font-family="IBM Plex Sans, Noto Sans KR, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF" text-anchor="middle">금일 변동 5개</text>
+      <text x="600" y="155" font-family="IBM Plex Sans, Noto Sans KR, sans-serif" font-size="14" fill="#0F172A" text-anchor="middle">기존 2개</text>
+
+      <!-- Row 3: 녹색(유지) -->
+      <text x="196" y="235" font-family="IBM Plex Sans, Noto Sans KR, sans-serif" font-size="15" font-weight="600" fill="#0F172A" text-anchor="end">녹색 안정 (총 6개)</text>
+      <rect x="210" y="212" width="390" height="36" fill="#065F46"/>
+      <text x="405" y="235" font-family="IBM Plex Sans, Noto Sans KR, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF" text-anchor="middle">특이 변동 없음 6개</text>
+
+      <!-- Row 4: 요약 합계 라인 -->
+      <text x="196" y="305" font-family="IBM Plex Sans, Noto Sans KR, sans-serif" font-size="14" fill="#475569" text-anchor="end">변동 지표 비중</text>
+      <rect x="210" y="286" width="205" height="24" fill="#0F172A"/>
+      <rect x="415" y="286" width="250" height="24" fill="#E2E8F0"/>
+      <text x="312" y="303" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">45% (9/20)</text>
+      <text x="540" y="303" font-family="IBM Plex Mono, monospace" font-size="13" fill="#334155" text-anchor="middle">55% (11/20)</text>
+    </svg>
+    <figcaption class="fig-note">단위: 모니터링 항목 수(개). 기준 시각: 2026-11-18 22:54 KST. 출처: 자체 OSINT 집계(IAEA, NK News, UN, GTIG, AEI/ISW, 연합뉴스 등).</figcaption>
+  </figure>
+</section>
+
+<section class="sec-s split">
+  <div class="split-left">
+    <h2>영변 우라늄 농축시설 추가 확장과 원자로 가동 지속</h2>
+    <p class="meta-line">신뢰도: 높음 · 위험도: HIGH</p>
+  </div>
+  <div class="split-right">
+    <p>
+      라파엘 그로시 국제원자력기구(IAEA) 사무총장은 11월 18일 비엔나에서 열린 35개국 이사회 성명을 통해 북한 영변 핵단지 내 기존 우라늄 농축시설의 추가 확장을 공식 확인했다. <a href="https://www.arabnews.com/world/iaea-says-north-korea-is-expanding-uranium-enrichment-plant-at-yongbyon-3012711" target="_blank" rel="noopener noreferrer">로이터·아랍뉴스 보도</a>에 따르면, 이 확장 공사는 2026년 9월 중순 시작돼 10월 말 외부 공사가 완료됐다.
+    </p>
+    <p>
+      IAEA는 또한 플루토늄 생산용 5MW 원자로가 7차 조사주기(irradiation cycle)에서 계속 가동 중인 정황과 함께, 경수로 역시 올해 4월부터 가동 중인 것으로 관측된다고 밝혔다. 2009년 사찰단 추방 이후 현장 접근이 차단된 IAEA는 상업용 위성사진 분석을 통해 영변과 강선 농축시설의 병행 확장을 추적하고 있다.
+    </p>
+    <div class="fact-split">
+      <p><strong>사실:</strong> IAEA 이사회 성명을 통해 영변 기존 우라늄 농축시설의 외부 확장 완공(9월 중순 착공~10월 말 완공)과 5MW 원자로 7차 조사주기·경수로 가동 정황이 발표됐다.</p>
+      <p><strong>추정:</strong> 5MW 원자로의 실제 사용후핵연료 인출 및 재처리 시점과 신규 확장 건물 내부 원심분리기 설치·가동 규모는 위성 관측만으로는 단정할 수 없는 추정 영역이다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec-s">
+  <h2>DMZ 경계 합의의 사실상 소멸과 사이버·제재 전선의 진화</h2>
+  <div class="strip-2">
+    <div>
+      <h3>남북 합의 MDL 부재와 NLL급 경계 방어론</h3>
+      <p>
+        남북 군사회담 협상 대표를 지낸 조용근 예비역 준장은 11월 18일 <a href="https://www.nknews.org/2026/11/seoul-must-defend-its-understanding-of-border-with-north-korea-ex-general-says/" target="_blank" rel="noopener noreferrer">NK News 인터뷰</a>에서 “오늘날 DMZ 내부에 남북이 합의한 군사분계선(MDL)은 존재하지 않는다”고 진단했다. 북한이 지뢰 매설 사과 요구로 군사회담 추진이 무산된 상황에서, 한국군이 북방한계선(NLL)을 수호하듯 자체 MDL 기준선을 방어해야 한다는 지적이다.
+      </p>
+      <div class="fact-split">
+        <p><strong>사실:</strong> 전직 남북 군사회담 대표의 공개 진단 및 지뢰 매설·경계선 해석 갈등으로 인한 군사당국 대화 교착 상태가 확인됐다.</p>
+        <p><strong>추정:</strong> 향후 북한군의 MDL 남하 작업 또는 국지적 우발 충돌 가능성은 상존하나, 11월 18일 현재 신규 물리적 충돌은 보고되지 않았다.</p>
+      </div>
+    </div>
+    <div>
+      <h3>AI 코딩 도구를 노린 '미드나잇 넵튠'과 UN 제재 갱신</h3>
+      <p>
+        구글 위협정보그룹(GTIG)은 11월 17일 보고서(<a href="https://www.itdaily.kr/news/articleView.html?idxno=242976" target="_blank" rel="noopener noreferrer">IT데일리 보도</a>)에서 북한 연계 추정 해킹그룹 '미드나잇 넵튠(MIDNIGHT NEPTUNE)'이 가짜 채용 담당자로 위장해 북미·유럽 가상자산 기업에 침투한 뒤 내부 코드 저장소의 <code>.claude/settings.json</code>을 변조했다고 밝혔다. 개발자가 AI 코딩 에이전트 '클로드 코드'를 실행하면 백도어(SOMBERMEME)가 자동 다운로드되는 방식이다.
+      </p>
+      <p>
+        한편 <a href="https://press.un.org/en/2026/sc16512.doc.htm" target="_blank" rel="noopener noreferrer">유엔 안보리 1718 대북제재위원회(SC/16512)</a>는 11월 13일 결정(16일 공표)을 통해 해외 건설 노동자 송출에 관여한 만수대해외개발회사(Mansudae Overseas Project Group)의 제재 목록 항목을 갱신했다.
+      </p>
+      <div class="fact-split">
+        <p><strong>사실:</strong> 구글 GTIG의 AI 코딩 도구 변조 공격 보고 및 유엔 안보리 1718 제재위의 만수대해외개발회사 항목 개정 공표가 이뤄졌다.</p>
+        <p><strong>추정:</strong> 해당 해킹 조직의 북한 정권 귀속 및 탈취 자금의 대량살상무기(WMD) 전용 규모는 위협정보 분석 기반 추정치다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<blockquote class="pull">
+  <p>“트럼프 대통령은 김정은 위원장과의 회담에 진지하지만, 아시아 순방 중 회담이 확정된 것은 아니다.”</p>
+  <cite>마르코 루비오 미국 국무장관, 2026년 11월 18일 마닐라 기자회견 (<a href="https://www.nknews.org/2026/11/rubio-says-trump-serious-about-meeting-kim-jong-un-but-doesnt-confirm-talks/" target="_blank" rel="noopener noreferrer">NK News</a>)</cite>
+</blockquote>
+
+<section class="sec-s split">
+  <div class="split-left">
+    <h2>선전 APEC 미·중·러 회담 전야: 북러 밀착과 북중 교역 둔화</h2>
+    <p class="meta-line">신뢰도: 높음 · 위험도: HIGH</p>
+  </div>
+  <div class="split-right">
+    <p>
+      도널드 트럼프 미국 대통령이 11월 18일 APEC 정상회의 참석차 중국 선전에 도착해 시진핑 국가주석의 공항 영접을 받았으며, 19일 사상 첫 미·중·러 3자 정상회담이 예정돼 있다(<a href="https://www.yna.co.kr/view/AKR20261118172900083" target="_blank" rel="noopener noreferrer">연합뉴스 보도</a>). 같은 날 한중 정상회담에서 시 주석은 한국의 북미대화 추진에 지지를 표명했고, 루비오 미 국무장관은 트럼프 대통령의 대화 의지를 재확인했다.
+    </p>
+    <p>
+      반면 북한의 대외 행보는 엇갈린 신호를 보인다. 블라디미르 푸틴 러시아 대통령은 11월 16일 모스크바에서 조용원 노동당 비서를 접견해 “전투적 우의”와 포괄적 전략적 동반자 조약 이행을 강조하고 쿠르스크 북한군 기념비의 연내 제막을 예고했다(<a href="https://www.donga.com/news/Inter/article/all/20261118/135045684/1" target="_blank" rel="noopener noreferrer">동아일보 보도</a>). 그러나 11월 18일 공개된 중국 해관총서 통계에서는 신압록강대교 개통에도 10월 북중 교역액이 2억 5,400만 달러로 전월(약 3억 달러) 대비 감소했다(<a href="https://www.nknews.org/2026/11/north-koreas-trade-with-china-slumps-despite-new-bridge-opening/" target="_blank" rel="noopener noreferrer">NK News</a>).
+    </p>
+    <div class="fact-split">
+      <p><strong>사실:</strong> 트럼프 대통령 선전 도착 및 19일 미·중·러 3자 회담 예정, 푸틴-조용원 크렘린궁 접견, 10월 북중 교역액 감소(2.54억 달러)가 각각 확인됐다.</p>
+      <p><strong>추정:</strong> 김정은 위원장의 방중·북미 깜짝 회동 성사 여부는 11월 18일 현재 이동 정황이 포착되지 않아 미지수이며, 미·중·러 3자 회담 내 한반도 의제 타협 가능성 역시 관측 단계다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec-s">
+  <h2>역내·글로벌 안보 연동: 전략폭격기 비행, 양안 전술 변화, 미군의 이란전 부담</h2>
+  <div class="strip-2">
+    <div>
+      <h3>러시아 전략자산 역내 비행과 양안 드론·사이버 공작</h3>
+      <p>
+        11월 17일 새벽 러시아 군용기의 KADIZ 무단 진입 및 일본 영공 침범에 이어, 러시아 Tu-95MS 전략폭격기 2대가 일본과 대만 주변을 비행한 뒤 베트남 다낭에 착륙했다(<a href="https://migflug.com/afterburner/russian-tu-95ms-bombers-da-nang-vietnam-2026/" target="_blank" rel="noopener noreferrer">MiGFlug 11/18</a>). 한반도 내 미 전략자산의 11월 18일 신규 전개는 확인되지 않았다.
+      </p>
+      <p>
+        양안 전선에서는 <a href="https://www.aei.org/commentary/china-taiwan-update-november-17-2026/" target="_blank" rel="noopener noreferrer">ISW-AEI 11월 17일 보고서</a>가 중국 인민해방군(PLA)의 우크라이나전 교훈 반영(소규모 침투·대드론 '철의 삼각' 훈련)과 대만군 대상 페이스북('Dreaming of China') 첩보 공작, 미 상무부 BIS의 11월 16일 제3국 경유 첨단 AI 반도체 우회수출 차단 규정 발효를 분석했다.
+      </p>
+    </div>
+    <div>
+      <h3>미국의 이란 전쟁 비용 논란과 중동 전력 분산</h3>
+      <p>
+        11월 18일 미국 상원 청문회에서는 이란과의 군사 충돌 비용이 10월 기준 미 국방부 추산 470억 달러를 넘어섰으며 바레인 미 해군기지 피해 복구 비용이 별도로 발생하고 있다는 질의가 이어졌다(<a href="https://www.warren.senate.gov/newsroom/press-releases/at-hearing-warren-grills-acting-navy-secretary-on-iran-war-what-is-this-war-costing-us/" target="_blank" rel="noopener noreferrer">엘리자베스 워런 상원의원실 11/18</a>). 중동 해역에는 3번째 미 항모전단이 전개된 상태다(<a href="https://www.theguardian.com/us-news/2026/nov/16/aircraft-middle-east-trump-military" target="_blank" rel="noopener noreferrer">가디언 11/17</a>).
+      </p>
+      <div class="fact-split">
+        <p><strong>사실:</strong> 러 Tu-95MS 다낭 착륙, PLA 대드론 훈련 및 미 BIS 수출통제 발효, 미 상원 청문회 이란전 비용 470억 달러 추산이 공식 확인됐다.</p>
+        <p><strong>추정:</strong> 중동 내 미 항모전단 추가 전개가 장기화할 경우 인도·태평양 및 한반도 유사시 미군 증원 자산 배분 여력에 제약이 가해질 가능성이 있다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-s">
+  <h2>20개 모니터링 지표 종합 현황 (2026-11-18 22:54 KST)</h2>
+  <p class="measure">아래 표는 금일 변동이 확인된 9개 항목(진하게 표시)과 기존 상태를 이어가는 11개 항목을 포함한 전체 20개 지표의 최신 기록이다.</p>
+  <div class="table-wrap">
+    <table class="osint-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>항목</th>
+          <th>신호등</th>
+          <th>변동</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-num">1</td>
+          <td class="col-item">탄도미사일</td>
+          <td class="col-sig">🔴</td>
+          <td>11/04 선덕→동해 미상 발사체 수 발 발사(합참), 11/13 NK Pro 11/04 집속탄두 보도 2022년 사진 재사용 분석</td>
+        </tr>
+        <tr>
+          <td class="col-num">2</td>
+          <td class="col-item">순항미사일/SLCM·방공</td>
+          <td class="col-sig">🟡</td>
+          <td>11/02 순항미사일 발사 및 11/03 산포탄두부 수직타격 공개(북한 주장)</td>
+        </tr>
+        <tr>
+          <td class="col-num">3</td>
+          <td class="col-item">SLBM·어뢰·잠수정·해군</td>
+          <td class="col-sig">🔴</td>
+          <td>11/02 남포 1만톤급 순양함 시찰(북한 주장, KCNA 11/04), 11/10 38 North 최현호 전략 분석, 11/12 NK Pro 통천 제2 해군기지 식별</td>
+        </tr>
+        <tr>
+          <td class="col-num">4</td>
+          <td class="col-item">병력·포병·방사포·UAV·복합타격</td>
+          <td class="col-sig">🔴</td>
+          <td>11/03 38 North 240mm MLRS 분석, 11/04 38 North 스텔스 전략 UAV 분석, 11/11 ISW/AEI 한반도 복합타격 평가</td>
+        </tr>
+        <tr class="changed">
+          <td class="col-num">5</td>
+          <td class="col-item">핵·TEL·다탄두</td>
+          <td class="col-sig">🔴↑</td>
+          <td>11/18 IAEA 그로시 사무총장, 영변 기존 우라늄 농축시설 추가 확장(10월 말 외부 완공)·5MW 원자로 7차 조사주기 가동 정황 발표 (Reuters/Arab News)</td>
+        </tr>
+        <tr>
+          <td class="col-num">6</td>
+          <td class="col-item">군수·비축·라진항</td>
+          <td class="col-sig">🟡</td>
+          <td>나홋카 인근 북러 선박 석탄 밀수 정황 및 대러 군수지원 지속 (NK News/ISW)</td>
+        </tr>
+        <tr class="changed">
+          <td class="col-num">7</td>
+          <td class="col-item">DMZ·NLL·지뢰·요새화·자주포</td>
+          <td class="col-sig">🔴↑</td>
+          <td>11/18 조용근 전 남북군사회담 수석대표, DMZ 내 남북 합의 MDL 소멸 진단 및 NLL 수준 방어 필요성 제기 (NK News)</td>
+        </tr>
+        <tr>
+          <td class="col-num">8</td>
+          <td class="col-item">GPS·전파교란·확성기·전파</td>
+          <td class="col-sig">🟢</td>
+          <td>10/08 합참 내년 전자기전 전담조직 신설 추진, 11/14 2027년 6월 관·군 GPS 교란 정보연동체계 구축 보도</td>
+        </tr>
+        <tr class="changed">
+          <td class="col-num">9</td>
+          <td class="col-item">전략자산 전체</td>
+          <td class="col-sig">🟡↑</td>
+          <td>11/17 러 군용기 KADIZ 무단진입 및 일본 영공 침범(MiGFlug 11/17), 러 Tu-95MS 폭격기 2대 일본·대만 비행 후 베트남 다낭 착륙(MiGFlug 11/18)</td>
+        </tr>
+        <tr>
+          <td class="col-num">10</td>
+          <td class="col-item">열병식·집결·전시회</td>
+          <td class="col-sig">🟢</td>
+          <td>10/10~11 국방발전전람회 이후 추가 열병식·병력 집결 위성징후 미포착</td>
+        </tr>
+        <tr class="changed">
+          <td class="col-num">11</td>
+          <td class="col-item">정부경고·동원·합참 해명</td>
+          <td class="col-sig">🟡↑</td>
+          <td>11/18 한중 정상회담서 시진핑 북미대화 지지 표명(NK News), 루비오 미 국무장관 트럼프-김정은 회담 "진지하나 미확정" 언급(NK News 11/18)</td>
+        </tr>
+        <tr>
+          <td class="col-num">12</td>
+          <td class="col-item">유실탄약·생활권위험물</td>
+          <td class="col-sig">🟢</td>
+          <td>특이 동향 없음</td>
+        </tr>
+        <tr>
+          <td class="col-num">13</td>
+          <td class="col-item">한미훈련·킬체인·MDRC·Freedom Flag·호국</td>
+          <td class="col-sig">🟢</td>
+          <td>10/26~11/06 한미 공군 프리덤 플래그(Freedom Flag) 종료 이후 추가 연합훈련 개시 발표 없음</td>
+        </tr>
+        <tr>
+          <td class="col-num">14</td>
+          <td class="col-item">김정은 동향</td>
+          <td class="col-sig">🟡</td>
+          <td>11/15~16 김정은·김주애 삼지연 관광지구 시찰(노동신문·조선중앙TV 11/17 보도), 방중 이동 정황 미포착(동아일보 11/18)</td>
+        </tr>
+        <tr class="changed">
+          <td class="col-num">15</td>
+          <td class="col-item">사이버·제재·IT노동자·암호화폐</td>
+          <td class="col-sig">🔴↑</td>
+          <td>11/17 구글 GTIG, 북한 연계 추정 '미드나잇 넵튠'의 클로드 코드(.claude/settings.json) 변조 백도어(SOMBERMEME) 유포 보고서 공개 (IT데일리 11/17)</td>
+        </tr>
+        <tr class="changed">
+          <td class="col-num">16</td>
+          <td class="col-item">국제공조·VOA·UN·MSMT</td>
+          <td class="col-sig">🟡↑</td>
+          <td>11/16 유엔 안보리 1718 제재위, 만수대해외개발회사(Mansudae Overseas Project Group) 제재 항목 갱신 공표 (UN SC/16512)</td>
+        </tr>
+        <tr class="changed">
+          <td class="col-num">17</td>
+          <td class="col-item">중국·러시아 연루</td>
+          <td class="col-sig">🔴↑</td>
+          <td>11/18 10월 북중교역 2.54억 달러로 전월 대비 감소(NK News), 푸틴 11/16 조용원 접견·쿠르스크 북한군 기념비 연내 제막 예고(동아일보 11/18)</td>
+        </tr>
+        <tr>
+          <td class="col-num">18</td>
+          <td class="col-item">전방부대 사건·사고</td>
+          <td class="col-sig">🟢</td>
+          <td>11/02 철원 전방부대 하사 1명 외상 사망(북한 연관 증거 없음), 이후 추가 사건 없음</td>
+        </tr>
+        <tr class="changed">
+          <td class="col-num">19</td>
+          <td class="col-item">양안전쟁(대만, 중국)</td>
+          <td class="col-sig">🟡↑</td>
+          <td>11/17 ISW-AEI, PLA 우크라이나전 교훈 반영 소규모 침투·대드론 훈련 및 대만군 대상 페이스북 첩보공작·미 BIS 첨단칩 우회차단 분석 (AEI 11/18)</td>
+        </tr>
+        <tr class="changed">
+          <td class="col-num">20</td>
+          <td class="col-item">미국 동향(전쟁부, 트럼프, 미군, 각지역 전쟁 상황)</td>
+          <td class="col-sig">🔴↑</td>
+          <td>11/18 트럼프 대통령 선전 APEC 도착·19일 미중러 3자 정상회담 예정(연합뉴스 11/18), 미 상원 이란전 비용 470억 달러 질의(워런 의원실 11/18)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="sec-s">
+  <h2>참고 출처</h2>
+  <ol class="sources-list">
+    <li>
+      <a href="https://www.arabnews.com/world/iaea-says-north-korea-is-expanding-uranium-enrichment-plant-at-yongbyon-3012711" target="_blank" rel="noopener noreferrer">Arab News (Reuters) — IAEA says North Korea is expanding uranium-enrichment plant at Yongbyon</a>
+      <span class="src-time">2026-11-18 11:42 KST</span>
+    </li>
+    <li>
+      <a href="https://www.nknews.org/2026/11/seoul-must-defend-its-understanding-of-border-with-north-korea-ex-general-says/" target="_blank" rel="noopener noreferrer">NK News — Seoul must defend its understanding of border with North Korea, ex-general says</a>
+      <span class="src-time">2026-11-18 12:54 KST</span>
+    </li>
+    <li>
+      <a href="https://migflug.com/afterburner/russian-tu-95ms-bombers-da-nang-vietnam-2026/" target="_blank" rel="noopener noreferrer">MiGFlug — Russian Tu-95MS Bombers Land in Da Nang, Vietnam</a>
+      <span class="src-time">2026-11-18 20:54 KST</span>
+    </li>
+    <li>
+      <a href="https://www.nknews.org/2026/11/rubio-says-trump-serious-about-meeting-kim-jong-un-but-doesnt-confirm-talks/" target="_blank" rel="noopener noreferrer">NK News — Rubio says Trump 'serious' about meeting Kim Jong Un, but doesn't confirm talks</a>
+      <span class="src-time">2026-11-18 13:54 KST</span>
+    </li>
+    <li>
+      <a href="https://www.itdaily.kr/news/articleView.html?idxno=242976" target="_blank" rel="noopener noreferrer">IT데일리 — “사람 개입 없는 '무인 AI 해킹' 본격화”…약점 발굴부터 침투까지 AI가</a>
+      <span class="src-time">2026-11-17 11:11 KST</span>
+    </li>
+    <li>
+      <a href="https://press.un.org/en/2026/sc16512.doc.htm" target="_blank" rel="noopener noreferrer">United Nations Security Council (SC/16512) — Security Council 1718 Sanctions Committee Updates One Entry on Its Sanctions List</a>
+      <span class="src-time">2026-11-16 14:00 KST</span>
+    </li>
+    <li>
+      <a href="https://www.donga.com/news/Inter/article/all/20261118/135045684/1" target="_blank" rel="noopener noreferrer">동아일보 — 푸틴, 北조용원 접견 '전투적 우의' 강조…방중기간 김정은 만나나?</a>
+      <span class="src-time">2026-11-18 13:56 KST</span>
+    </li>
+    <li>
+      <a href="https://www.nknews.org/2026/11/north-koreas-trade-with-china-slumps-despite-new-bridge-opening/" target="_blank" rel="noopener noreferrer">NK News — North Korea's trade with China slumps despite new bridge opening</a>
+      <span class="src-time">2026-11-18 17:54 KST</span>
+    </li>
+    <li>
+      <a href="https://www.aei.org/commentary/china-taiwan-update-november-17-2026/" target="_blank" rel="noopener noreferrer">AEI / ISW — China &amp; Taiwan Update, November 17, 2026</a>
+      <span class="src-time">2026-11-18 06:54 KST</span>
+    </li>
+    <li>
+      <a href="https://www.yna.co.kr/view/AKR20261118172900083" target="_blank" rel="noopener noreferrer">연합뉴스 — 트럼프, APEC 참석차 中선전 도착…시진핑, 공항서 직접 영접</a>
+      <span class="src-time">2026-11-18 18:19 KST</span>
+    </li>
+    <li>
+      <a href="https://www.warren.senate.gov/newsroom/press-releases/at-hearing-warren-grills-acting-navy-secretary-on-iran-war-what-is-this-war-costing-us/" target="_blank" rel="noopener noreferrer">U.S. Senator Elizabeth Warren — At Hearing, Warren Grills Acting Navy Secretary On Iran War</a>
+      <span class="src-time">2026-11-18 11:54 KST</span>
+    </li>
+    <li>
+      <a href="https://www.theguardian.com/us-news/2026/nov/16/aircraft-middle-east-trump-military" target="_blank" rel="noopener noreferrer">The Guardian — Third US aircraft carrier brings thousands more troops to Middle East</a>
+      <span class="src-time">2026-11-17 06:47 KST</span>
+    </li>
+  </ol>
+</section>
+
+<script src="../archive.js" defer></script>
+</body>
+</html>

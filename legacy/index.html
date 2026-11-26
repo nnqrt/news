@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한반도 안보·군사 OSINT 역대 판본 아카이브</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="../archive.js"></script>
+<style>
+:root {
+  --paper: #FFFFFF;
+  --surface: #F8FAFC;
+  --ink: #111827;
+  --ink2: #334155;
+  --mute: #64748B;
+  --hair: #CBD5E1;
+  --accent: #9F1239;
+  --v2-bg: #EFF6FF;
+  --v2-tx: #1D4ED8;
+  --v1-bg: #F1F5F9;
+  --v1-tx: #475569;
+  --cur-bg: #FEF2F2;
+  --cur-tx: #9F1239;
+}
+
+html.dark {
+  --paper: #0F1216;
+  --surface: #161B22;
+  --ink: #F8FAFC;
+  --ink2: #CBD5E1;
+  --mute: #94A3B8;
+  --hair: #334155;
+  --accent: #FB7185;
+  --v2-bg: #1E293B;
+  --v2-tx: #93C5FD;
+  --v1-bg: #1E293B;
+  --v1-tx: #CBD5E1;
+  --cur-bg: #3F1522;
+  --cur-tx: #FDA4AF;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 28px clamp(16px, 5vw, 64px) 72px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.masthead {
+  border-top: 4px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 14px 0 18px;
+  margin-bottom: 24px;
+}
+
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--mute);
+  margin-bottom: 10px;
+}
+
+.top-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border: 1px solid var(--hair);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--ink2);
+  font-size: 14.5px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.search-input {
+  flex: 1 1 260px;
+  max-width: 420px;
+  padding: 8px 12px;
+  border: 1px solid var(--hair);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 13.5px;
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tab-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--hair);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink2);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.day-group {
+  margin-bottom: 28px;
+}
+
+.day-heading {
+  font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--mute);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--hair);
+  margin: 0 0 12px;
+}
+
+.card-list {
+  display: grid;
+  gap: 10px;
+}
+
+.edition-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--hair);
+  border-left: 4px solid var(--ink);
+  border-radius: 5px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+
+.edition-card:hover {
+  transform: translateY(-1px);
+  border-left-color: var(--accent);
+}
+
+.edition-card.is-current {
+  border-left-color: var(--accent);
+}
+
+.card-main {
+  flex: 1 1 420px;
+  min-width: 0;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.time-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+
+.badge.v2 { background: var(--v2-bg); color: var(--v2-tx); }
+.badge.v1 { background: var(--v1-bg); color: var(--v1-tx); }
+.badge.cur { background: var(--cur-bg); color: var(--cur-tx); }
+
+.card-title {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.card-deck {
+  font-size: 13px;
+  color: var(--ink2);
+  margin: 4px 0 0;
+}
+
+.card-action {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.empty-state {
+  padding: 36px;
+  text-align: center;
+  color: var(--mute);
+  border: 1px dashed var(--hair);
+  border-radius: 6px;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="topbar">
+      <span>news.bubutech2.com · 한반도 안보·군사 OSINT 과거 시점 판본 저장소</span>
+      <div class="top-actions">
+        <a class="btn primary" href="../index.html">← 현재 메인판 열기</a>
+        <button id="themeToggle" class="btn" type="button">야간 모드 전환</button>
+      </div>
+    </div>
+    <h1>한반도 OSINT 역대 판본 아카이브</h1>
+    <p class="subtitle" id="archiveSummary">전체 판본 목록을 불러오는 중...</p>
+  </header>
+
+  <section class="controls" aria-label="아카이브 검색 및 필터">
+    <input id="searchInput" class="search-input" type="search" placeholder="날짜, 시각, 제목, 주요 이슈 검색..." aria-label="아카이브 검색">
+    <div class="filter-tabs" id="formatTabs">
+      <button class="tab-btn active" type="button" data-fmt="all">전체</button>
+      <button class="tab-btn" type="button" data-fmt="v2">인터랙티브 신문판 v2</button>
+      <button class="tab-btn" type="button" data-fmt="v1">초기 브리핑 v1</button>
+    </div>
+  </section>
+
+  <main id="archiveList"></main>
+</div>
+
+<script>
+(() => {
+  let allEditions = [];
+  let activeFormat = "all";
+
+  function escapeHtml(str) {
+    return String(str || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function render() {
+    const query = document.getElementById("searchInput").value.trim().toLowerCase();
+    const listEl = document.getElementById("archiveList");
+    const filtered = allEditions.filter((ed) => {
+      if (activeFormat !== "all" && ed.format !== activeFormat && ed.format !== "auto") return false;
+      if (!query) return true;
+      const hay = `${ed.id} ${ed.label} ${ed.title} ${ed.headline} ${ed.deck || ""}`.toLowerCase();
+      return hay.includes(query);
+    });
+
+    if (!filtered.length) {
+      listEl.innerHTML = '<div class="empty-state">조건에 맞는 과거 판본이 없습니다.</div>';
+      return;
+    }
+
+    const byDate = new Map();
+    for (const ed of filtered) {
+      const dateKey = `${ed.id.slice(0, 4)}-${ed.id.slice(4, 6)}-${ed.id.slice(6, 8)}`;
+      if (!byDate.has(dateKey)) byDate.set(dateKey, []);
+      byDate.get(dateKey).push(ed);
+    }
+
+    let html = "";
+    for (const [dateKey, items] of byDate.entries()) {
+      html += `<section class="day-group"><h2 class="day-heading">${escapeHtml(dateKey)} (${items.length}건)</h2><div class="card-list">`;
+      for (const ed of items) {
+        const href = `../${ed.path}`;
+        const fmtBadge = ed.format === "v1"
+          ? '<span class="badge v1">브리핑 v1</span>'
+          : '<span class="badge v2">신문판 v2</span>';
+        const curBadge = ed.isCurrent ? '<span class="badge cur">현재 메인</span>' : "";
+        const headline = ed.headline || ed.title || ed.label;
+        const deck = ed.deck ? `<p class="card-deck">${escapeHtml(ed.deck)}</p>` : "";
+        html += `
+          <a class="edition-card ${ed.isCurrent ? "is-current" : ""}" href="${escapeHtml(href)}">
+            <div class="card-main">
+              <div class="card-meta">
+                <span class="time-mono">${escapeHtml(ed.label)}</span>
+                ${curBadge}${fmtBadge}
+              </div>
+              <p class="card-title">${escapeHtml(headline)}</p>
+              ${deck}
+            </div>
+            <span class="card-action">시점 열람 →</span>
+          </a>`;
+      }
+      html += "</div></section>";
+    }
+    listEl.innerHTML = html;
+  }
+
+  document.getElementById("themeToggle").addEventListener("click", (e) => {
+    const dark = document.documentElement.classList.toggle("dark");
+    e.target.textContent = dark ? "주간 모드 전환" : "야간 모드 전환";
+  });
+
+  document.getElementById("searchInput").addEventListener("input", render);
+  document.getElementById("formatTabs").addEventListener("click", (e) => {
+    const btn = e.target.closest(".tab-btn");
+    if (!btn) return;
+    activeFormat = btn.dataset.fmt;
+    document.querySelectorAll("#formatTabs .tab-btn").forEach((b) => b.classList.toggle("active", b === btn));
+    render();
+  });
+
+  window.addEventListener("DOMContentLoaded", async () => {
+    if (window.OSINTArchive) {
+      allEditions = await window.OSINTArchive.loadEditions();
+    }
+    const oldest = allEditions[allEditions.length - 1];
+    const newest = allEditions[0];
+    document.getElementById("archiveSummary").textContent = allEditions.length
+      ? `총 ${allEditions.length}개 고유 시점 판본 보관 중 (${oldest.label} ~ ${newest.label}) · 중복 제거 완료`
+      : "보관된 판본이 없습니다.";
+    render();
+  });
+})();
+</script>
+</body>
+</html>
