@@ -90,6 +90,21 @@ def collect_legacy_files() -> dict[str, str]:
     return legacy_files
 
 
+def load_previous_current() -> tuple[str | None, str | None]:
+    manifest_path = os.path.join(LEGACY_DIR, "editions.json")
+    if not os.path.exists(manifest_path):
+        return None, None
+    try:
+        with open(manifest_path, encoding="utf-8") as f:
+            data = json.load(f)
+        for ed in data.get("editions", []):
+            if ed.get("isCurrent") and ed.get("path") == "index.html":
+                return ed.get("id"), ed.get("title")
+    except (OSError, json.JSONDecodeError):
+        pass
+    return None, None
+
+
 def main() -> None:
     wired = 0
     promoted = False
@@ -105,12 +120,19 @@ def main() -> None:
         legacy_digests.add(content_digest(raw_html))
 
     root_index = os.path.join(REPO_ROOT, "index.html")
+    prev_id, prev_title = load_previous_current()
 
-    # Preserve existing root index.html in legacy/ only if its content is not already archived
+    # Preserve existing root index.html in legacy/ only if it is an unarchived standalone edition
     if os.path.exists(root_index):
         with open(root_index, encoding="utf-8") as f:
             root_html = f.read()
-        if content_digest(root_html) not in legacy_digests:
+        root_title_m = re.search(r"<title>(.*?)</title>", root_html, re.DOTALL | re.IGNORECASE)
+        root_title = re.sub(r"\s+", " ", root_title_m.group(1)).strip() if root_title_m else None
+        already_tracked_in_legacy = (
+            content_digest(root_html) in legacy_digests
+            or (prev_id in legacy_files and prev_title is not None and root_title == prev_title)
+        )
+        if not already_tracked_in_legacy:
             root_id = detect_root_index_id(root_html)
             if root_id and root_id not in legacy_files:
                 legacy_copy_path = os.path.join(LEGACY_DIR, f"index_{root_id}.html")
@@ -150,18 +172,32 @@ def main() -> None:
         fallback_id = detect_root_index_id(updated_root) or datetime.now(KST).strftime("%Y%m%d%H%M")
         editions.append(extract_meta(updated_root, "index.html", fallback_id, is_current=True))
 
+    manifest_path = os.path.join(LEGACY_DIR, "editions.json")
+    generated_at = datetime.now(KST).isoformat()
+    if os.path.exists(manifest_path):
+        try:
+            with open(manifest_path, encoding="utf-8") as f:
+                existing_manifest = json.load(f)
+            if (
+                existing_manifest.get("count") == len(editions)
+                and existing_manifest.get("editions") == editions
+                and existing_manifest.get("generatedAt")
+            ):
+                generated_at = existing_manifest["generatedAt"]
+        except (OSError, json.JSONDecodeError):
+            pass
+
     manifest = {
-        "generatedAt": datetime.now(KST).isoformat(),
+        "generatedAt": generated_at,
         "count": len(editions),
         "editions": editions,
     }
-    manifest_path = os.path.join(LEGACY_DIR, "editions.json")
     manifest_text = json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
-    write_if_changed(manifest_path, manifest_text)
+    manifest_updated = write_if_changed(manifest_path, manifest_text)
 
     print(
         f"Generated {manifest_path} with {len(editions)} editions "
-        f"(promoted={promoted}, archived_root={archived_root}, wired={wired})."
+        f"(promoted={promoted}, archived_root={archived_root}, wired={wired}, manifest_updated={manifest_updated})."
     )
 
 
