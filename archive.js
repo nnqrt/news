@@ -80,17 +80,23 @@
   }
 
   function mergeEditions(manifestList, ghList) {
-    const byKey = new Map();
+    const byId = new Map();
     for (const item of manifestList) {
       if (!item || !item.path) continue;
-      byKey.set(item.path, item);
-    }
-    for (const item of ghList) {
-      if (!byKey.has(item.path)) {
-        byKey.set(item.path, item);
+      const key = item.id || item.path;
+      const existing = byId.get(key);
+      if (!existing || item.path === "index.html") {
+        byId.set(key, item);
       }
     }
-    const list = Array.from(byKey.values());
+    for (const item of ghList) {
+      if (!item || !item.path) continue;
+      const key = item.id || item.path;
+      if (!byId.has(key)) {
+        byId.set(key, item);
+      }
+    }
+    const list = Array.from(byId.values());
     list.sort((a, b) => {
       if (a.id !== b.id) return b.id.localeCompare(a.id);
       return a.path === "index.html" ? -1 : 1;
@@ -128,7 +134,9 @@
       opt.value = resolveHref(base, ed.path);
       const tag = ed.isCurrent ? " [현재 메인]" : "";
       opt.textContent = `📅 ${ed.label}${tag}`;
-      if (ed.path === currentPath) opt.selected = true;
+      if (ed.path === currentPath || (currentInfo.id && ed.id === currentInfo.id)) {
+        opt.selected = true;
+      }
       select.appendChild(opt);
     }
 

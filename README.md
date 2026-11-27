@@ -13,7 +13,8 @@
 
 ## 앞으로 새 콘텐츠 추가 방법
 
-1. 과거 판본을 보존할 때는 `legacy/index_YYYYMMDDHHMM.html` 규칙으로 저장합니다.
-2. 새 메인판 `index.html` 또는 `legacy/index_*.html`을 올릴 때:
-   - 로컬에서는 `python scripts/build_archive.py`를 실행한 뒤 커밋/푸시하면 `legacy/editions.json`과 `archive.js` 연결이 자동 반영됩니다.
-   - 웹에서 직접 파일을 업로드하더라도 `archive.js`와 `legacy/index.html`이 GitHub API로 `legacy/index_*.html`을 자동 탐색해 목록에 표시합니다(`.github/workflows/sync-archive.yml`이 활성화된 경우 `editions.json`도 자동 갱신).
+1. 새 신문판이나 과거 판본을 **`legacy/index_YYYYMMDDHHMM.html`** 규칙으로 업로드합니다(예: `legacy/index_202611270900.html`).
+2. 별도로 루트 `index.html`을 교체하지 않아도, GitHub Actions(`.github/workflows/sync-archive.yml`)가 `legacy/index_*.html` 중 가장 최신 시각 파일을 자동으로 루트 `index.html`로 승격하고 `legacy/editions.json`과 `archive.js` 연결을 동기화합니다.
+   - 로컬에서 즉시 반영할 때는 `python scripts/build_archive.py`를 실행한 뒤 커밋/푸시하면 됩니다.
+   - 기존 루트 `index.html`이 `legacy/`에 아직 보관되지 않은 상태라면 승격 전에 `legacy/index_YYYYMMDDHHMM.html`로 자동 보존됩니다.
+   - Actions 반영 직전에도 `archive.js`와 `legacy/index.html`이 GitHub API로 `legacy/index_*.html`을 탐색해 드롭다운/목록에 표시합니다.
